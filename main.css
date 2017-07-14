@@ -1,0 +1,27 @@
+.wrapper {
+  background-color: #50b832;
+  max-width: 27.5em;
+}
+button {
+  margin: 0;
+  padding: .5em;
+  font-size: 3em;
+  width: 2.2em;
+  height: 2.2em;
+  background-color: #50b832;
+  color: white;
+  font-weight: lighter;
+  border: 1px solid #dbd6dd;
+}
+button:focus {
+  outline: none;
+}
+.op2:active {
+  background-color: #95cf85;
+}
+.op1 {
+  background-color: #95cf85;
+}
+.op1:active {
+  background-color: #50b832;
+}
