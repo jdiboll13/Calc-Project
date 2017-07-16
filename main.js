@@ -1,0 +1,2 @@
+document.getElementsByTagName('button')
+addEventListener()
