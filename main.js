@@ -1,24 +1,30 @@
-const one = document.getElementById('one')
-const two = document.getElementById('two')
-const three = document.getElementById('three')
-const four = document.getElementById('four')
-const five = document.getElementById('five')
-const six = document.getElementById('six')
-const seven = document.getElementById('seven')
-const eight = document.getElementById('eight')
-const nine = document.getElementById('nine')
-const zero = document.getElementById('zero')
-const clear = document.getElementById('clear')
-const multiply = document.getElementById('multiply')
-const divide = document.getElementById('divide')
-const add = document.getElementById('add')
-const subtract = document.getElementById('subtract')
-const equal = document.getElementById('equal')
-const decimal = document.getElementById('decimal')
-let numbers = document.getElementsByClassName('!== op1')
+const one = document.querySelector('#one')
+const two = document.querySelector('#two')
+const three = document.querySelector('#three')
+const four = document.querySelector('#four')
+const five = document.querySelector('#five')
+const six = document.querySelector('#six')
+const seven = document.querySelector('#seven')
+const eight = document.querySelector('#eight')
+const nine = document.querySelector('#nine')
+const zero = document.querySelector('#zero')
+const clear = document.querySelector('#clear')
+const multiply = document.querySelector('#multiply')
+const divide = document.querySelector('#divide')
+const add = document.querySelector('#add')
+const subtract = document.querySelector('#subtract')
+const equal = document.querySelector('#equal')
+const decimal = document.querySelector('#decimal')
+const number = document.querySelector('.number')
+const op1 = document.querySelectorAll('.op1')
 
 let display = document.getElementById('display')
-let thisOperator = 0
+
+let number1
+let number2
+let operatorClicked
+let resultNumber
+
 one.addEventListener('click', () => {
   display.append(1)
 })
@@ -49,43 +55,60 @@ nine.addEventListener('click', () => {
 zero.addEventListener('click', () => {
   display.append(0)
 })
-multiply.addEventListener('click', () => {
-  thisOperator = '*'
-  display.append('*')
-})
-divide.addEventListener('click', () => {
-  thisOperator = '/'
-  display.append('/')
-})
-add.addEventListener('click', () => {
-  display.append('+')
-})
-subtract.addEventListener('click', () => {
-  display.append('-')
-})
+// divide.addEventListener('click', () => {
+//   number1 = parseFloat(display.textContent)
+//   console.log(number1)
+//   display.textContent = ''
+// })
+// multiply.addEventListener('click', () => {
+//   number1 = parseFloat(display.textContent)
+//   console.log(number1)
+//   display.textContent = ''
+// })
+// subtract.addEventListener('click', () => {
+//   number1 = parseFloat(display.textContent)
+//   console.log(number1)
+//   display.textContent = ''
+// })
+// add.addEventListener('click', () => {
+//   number1 = parseFloat(display.textContent)
+//   console.log(number1)
+//   display.textContent = ''
+// })
 decimal.addEventListener('click', () => {
   display.append('.')
 })
-equal.addEventListener('click', () => {
-  display.textContent.split('').
-  forEach((v, i, a) => {
-  console.log(a)
-  function sort(values) {
-    for(var i = 0; i < values.length; ++i) {
-      if (values[i] === numbers && values[i+1] === numbers) {
-        concat(values[i], values[i+1]);
-      } else {
-        return Number
-      }
-    }
-  }
-})
-    //if ((display.textContent[i] = numbers))
-    //let array = []
-    //array.push(display.textContent)
-    //console.log(display.textContent)
+op1.forEach(operator => {
+  operator.addEventListener('click', () => {
+    number1 = parseFloat(display.textContent)
+    operatorClicked = operator.textContent
+    console.log(number1)
+    console.log(operatorClicked)
+    display.textContent = ''
   })
+})
+equal.addEventListener('click', () => {
+  number2 = parseFloat(display.textContent)
+  console.log(number2)
+  if (operatorClicked === '+') {
+    resultNumber = number1 + number2
+  } else if (operatorClicked === '-') {
+    resultNumber = number1 - number2
+  } else if (operatorClicked === '/') {
+    resultNumber = number1 / number2
+  } else if (operatorClicked === '*') {
+    resultNumber = number1 * number2
+  }
+  display.textContent = resultNumber
+  console.log(resultNumber)
+  number1 = resultNumber
+  operatorClicked = null
+  number2 = ''
+})
 
 clear.addEventListener('click', () => {
-  display.append()
+  display.textContent = ''
+  number1 = ''
+  number2 = ''
+  operatorClicked = null
 })
